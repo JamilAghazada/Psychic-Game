@@ -22,18 +22,16 @@
     <p id="Hearts"> Guesses Left: 9 </p>
 
     <p id="wrong-letters"> Your Guesses so far: </p>
-    <button onclick="forbutton()"   type="button" class="btn hint btn-success"><img class="lamb" src="./assets/11images/indir-removebg-preview.png" alt=""> Hint</button>
+    <!-- <button onclick="sorus.forbutton()" type="button" class="btn hint btn-success"><img class="lamb"
+            src="./assets/11images/indir-removebg-preview.png" alt=""> Hint</button>
+
+            function forbutton() {
+                alert("This letter for you : " + word[forhint])
+            } -->
 
     <script>
-        var random_words = ["finger", "eminem", "number", "hungry", "burgerking", "bmw", "egg", "metropol", "bashir"]/*random listemiz */
-        var computer = Math.random()/*random bi sey secir */
-        computer = computer * (random_words.length - 1)
-        computer = Math.floor(computer)
-        
-        var word = random_words[computer]//komputerin secdiyi random soz.
-        var forhint = Math.random()*(word.length-1)
-        forhint = Math.floor(forhint) 
-        console.log(word)/*sozu yazdirdiq */
+
+        /*sozu yazdirdiq */
         var wins = 0/*wins deyiskenimiz */
         var lose = 0
         var heart = 9
@@ -44,80 +42,124 @@
         //****
         var user = []
         var user_dicriminated = []
-    
-        function forbutton(){
+
+        function sorus() {
+            var random_words = ["finger", "eminem", "number", "hungry", "burgerking", "bmw", "egg", "metropol", "bashir"]/*random listemiz */
+            var computer = Math.random()/*random bi sey secir */
+            computer = computer * (random_words.length - 1)
+            computer = Math.floor(computer)
+
+            var word = random_words[computer]//komputerin secdiyi random soz.
+            var forhint = Math.random() * (word.length - 1)
+            forhint = Math.floor(forhint)
+            console.log(word)
+          
+
+            function forbutton() {
                 alert("This letter for you : " + word[forhint])
             }
-        for (c of word) {
-            lettersw.push(c)
+            for (c of word) {
+                lettersw.push(c)
 
-        }
-        lettersw.forEach(function (value) {
-            if (wordsletters.indexOf(value) == -1) wordsletters.push(value);
-        });
-        console.log(wordsletters)
-        // our function*****************************************************************************
-        function userinput(input){
-             var w = "1"
-            var userchoose = input.key
-            console.log(userchoose)
-           
-         if (heart > 0){
-            if(word.indexOf(userchoose)== -1){
-               wrong_letters.push(userchoose)
-               heart = heart -1
-               console.log(heart)
-               document.getElementById("wrong-letters").innerHTML = ("Your Guesses so far:" + wrong_letters)
-               document.getElementById("Hearts").innerHTML = ("Guesses left: " + heart)
-               
-           }}
-           if (heart == 0){
-               alert("I am really sorry,you lose!")
-               lose +=1
-               document.getElementById("lose").innerHTML = ("Loses: " + lose)
-           }
-         
-            console.log("dasld "+ wrong_letters)
-            for (x of word){
-                if(x == userchoose){
-                    user.push(userchoose)
-                    
+            }
+            lettersw.forEach(function (value) {
+                if (wordsletters.indexOf(value) == -1) wordsletters.push(value);
+            });
+            console.log(wordsletters)
+
+            function userinput(input) {
+                var userchoose = input.key
+                console.log(userchoose)
+
+                if (heart > 0) {
+                    if (word.indexOf(userchoose) == -1) {
+                        wrong_letters.push(userchoose)
+                        heart = heart - 1
+                        console.log(heart)
+                        document.getElementById("wrong-letters").innerHTML = ("Your Guesses so far:" + wrong_letters)
+                        document.getElementById("Hearts").innerHTML = ("Guesses left: " + heart)
+                    }
                 }
-                
-                
+                if (heart == 0) {
+                    alert("I am really sorry,you lose!")
+                    lose += 1
+                    document.getElementById("lose").innerHTML = ("Loses: " + lose)
+                    var allright2 = confirm("Are you want try it ?")
+                    if (allright == true) {
+
+                        document.getElementById("wrong-letters").innerHTML = ("Your Guesses so far:")
+                        heart = 9
+                        wrong_letters = []
+                        //****
+                        lettersw = []
+                        wordsletters = []
+                        //****
+                        user = []
+                        user_dicriminated = []
+                        sorus()
+
+                    }
+                }
+                console.log("dasld " + wrong_letters)
+                for (x of word) {
+                    if (x == userchoose) {
+                        user.push(userchoose)
+
+                    }
+
+
+                }
+
+                if (heart == 0) {
+
+                }
+                user.forEach(function (value) {
+                    if (user_dicriminated.indexOf(value) == -1) user_dicriminated.push(value);
+                });
+                console.log(user)
+                console.log(user_dicriminated)
+                if (user_dicriminated.length == wordsletters.length) {
+                    {
+                        wins += 1
+                        alert("You won dude!")
+
+                        document.getElementById("win").innerHTML = ("Wins: " + wins)
+                        wrong_letters = []
+                        //****
+                        lettersw = []
+                        wordsletters = []
+                        //****
+                        user = []
+                        user_dicriminated = []
+                        var allright2 = confirm("Are you want try it ?")
+                        if (allright == true) {
+                            sorus()
+                        }
+                    }
+                }
+
+
             }
-            
-            if(heart == 0){
-                
-            }
-            user.forEach(function (value) {
-            if (user_dicriminated.indexOf(value) == -1) user_dicriminated.push(value);
-        });
-            console.log(user)
-            console.log(user_dicriminated)
-            if(user_dicriminated.length == wordsletters.length){{
-                wins +=1
-                alert("You won dude!")
-                alert("Reset page for new game")
-                document.getElementById("win").innerHTML = ("Wins: " + wins)
-            }}
-            
-        
+
+
+
+
+
+            window.onkeypress = userinput
         }
-      
-        
-        window.onkeypress = userinput
+        var allright = confirm("Are you want play game?")
+        if (allright == true) {
+            sorus()
+        }
+                        // our function*****************************************************************************
 
-
-
-
-//1.0-->Sozu goturduk.+
-//1.1-->Sozu herflerine ayirdiq+
-//1.2-->Sozu her herfden 1 dene olacaq sekilde wordsletters listine atdiq.+
-//1.3-->User inputunu aldiq+
-//1.4-->Eger sozdeki herfler ile ,input ust uste dusurse onu arraya push etdik+
-//1.5 -->Push etdiymiz arraydaki herfleri yeni bir arraya elave etdik hansiki tekrarlanma yoxdur.
-//1.6-->Sonuncu elave edilen array ile ,1.4 maddesinde qeyd etdiyimiz arrayin uzunluqlarini yoxladiq eger beraberdirse soz tapilib!
+                //1.0-->Sozu goturduk.+
+                //1.1-->Sozu herflerine ayirdiq+
+                //1.2-->Sozu her herfden 1 dene olacaq sekilde wordsletters listine atdiq.+
+                //1.3-->User inputunu aldiq+
+                //1.4-->Eger sozdeki herfler ile ,input ust uste dusurse onu arraya push etdik+
+                //1.5 -->Push etdiymiz arraydaki herfleri yeni bir arraya elave etdik hansiki tekrarlanma yoxdur.
+                //1.6-->Sonuncu elave edilen array ile ,1.4 maddesinde qeyd etdiyimiz arrayin uzunluqlarini yoxladiq eger beraberdirse soz tapilib!
     </script>
 </body>
 

@@ -1,0 +1,31 @@
+body > h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 36px;
+    padding: 30px;
+    font-weight: bolder;
+}
+p{
+    margin: 30px;
+}
+.hint{
+    margin-left: 30px;
+    box-shadow: 2px 2px 3px 2px rgb(153, 152, 152) !important;
+    color: rgb(199, 170, 9);
+    
+}
+.hint:hover{
+    color: rgb(199, 170, 9) !important;
+
+}
+.hint:active{
+    color: rgb(41, 176, 194) !important;
+
+}
+.lamb{
+    width: 20px;
+    height: 30px;
+}
+#win{
+    
+    margin-left: 30px;
+}
