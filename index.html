@@ -22,42 +22,43 @@
     <p id="Hearts"> Guesses Left: 9 </p>
 
     <p id="wrong-letters"> Your Guesses so far: </p>
-    <!-- <button onclick="sorus.forbutton()" type="button" class="btn hint btn-success"><img class="lamb"
+    <button onclick="forbutton()" type="button" class="btn hint btn-success"><img class="lamb"
             src="./assets/11images/indir-removebg-preview.png" alt=""> Hint</button>
 
-            function forbutton() {
-                alert("This letter for you : " + word[forhint])
-            } -->
-
     <script>
-
+          
         /*sozu yazdirdiq */
         var wins = 0/*wins deyiskenimiz */
         var lose = 0
         var heart = 9
         var wrong_letters = []
+       
         //****
         var lettersw = []
         var wordsletters = []
         //****
         var user = []
         var user_dicriminated = []
-
+        var random_words = ["finger", "eminem", "number", "hungry", "burgerking", "bmw", "egg", "metropol", "bashir"]/*random listemiz */
         function sorus() {
-            var random_words = ["finger", "eminem", "number", "hungry", "burgerking", "bmw", "egg", "metropol", "bashir"]/*random listemiz */
-            var computer = Math.random()/*random bi sey secir */
+            forbutton = function () {
+                forhint = Math.random() * (wordsletters.length - 1)
+                forhint = Math.floor(forhint)
+                alert("This letter for you : " + wordsletters[forhint])
+                
+            }
+            random_words = ["finger", "eminem", "number", "hungry", "burgerking", "bmw", "egg", "metropol", "bashir"]/*random listemiz */
+            computer = Math.random()/*random bi sey secir */
             computer = computer * (random_words.length - 1)
             computer = Math.floor(computer)
 
-            var word = random_words[computer]//komputerin secdiyi random soz.
-            var forhint = Math.random() * (word.length - 1)
-            forhint = Math.floor(forhint)
-            console.log(word)
+            word = random_words[computer]//komputerin secdiyi random soz.
+            
+            console.log("Our -word:  " + word)
+            
           
 
-            function forbutton() {
-                alert("This letter for you : " + word[forhint])
-            }
+            
             for (c of word) {
                 lettersw.push(c)
 
@@ -65,7 +66,7 @@
             lettersw.forEach(function (value) {
                 if (wordsletters.indexOf(value) == -1) wordsletters.push(value);
             });
-            console.log(wordsletters)
+            console.log("Our words letter ; " +wordsletters)
 
             function userinput(input) {
                 var userchoose = input.key
@@ -100,7 +101,7 @@
 
                     }
                 }
-                console.log("dasld " + wrong_letters)
+                console.log( wrong_letters)
                 for (x of word) {
                     if (x == userchoose) {
                         user.push(userchoose)
@@ -147,10 +148,12 @@
 
             window.onkeypress = userinput
         }
+       
         var allright = confirm("Are you want play game?")
         if (allright == true) {
             sorus()
         }
+      
                         // our function*****************************************************************************
 
                 //1.0-->Sozu goturduk.+
