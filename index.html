@@ -41,6 +41,7 @@
         var user_dicriminated = []
         var random_words = ["finger", "eminem", "number", "hungry", "burgerking", "bmw", "egg", "metropol", "bashir"]/*random listemiz */
         function sorus() {
+            
             forbutton = function () {
                 forhint = Math.random() * (wordsletters.length - 1)
                 forhint = Math.floor(forhint)
@@ -54,7 +55,7 @@
 
             word = random_words[computer]//komputerin secdiyi random soz.
             
-            console.log("Our -word:  " + word)
+            
             
           
 
@@ -66,7 +67,7 @@
             lettersw.forEach(function (value) {
                 if (wordsletters.indexOf(value) == -1) wordsletters.push(value);
             });
-            console.log("Our words letter ; " +wordsletters)
+            
 
             function userinput(input) {
                 var userchoose = input.key
@@ -76,7 +77,7 @@
                     if (word.indexOf(userchoose) == -1) {
                         wrong_letters.push(userchoose)
                         heart = heart - 1
-                        console.log(heart)
+                        
                         document.getElementById("wrong-letters").innerHTML = ("Your Guesses so far:" + wrong_letters)
                         document.getElementById("Hearts").innerHTML = ("Guesses left: " + heart)
                     }
@@ -101,7 +102,7 @@
 
                     }
                 }
-                console.log( wrong_letters)
+                
                 for (x of word) {
                     if (x == userchoose) {
                         user.push(userchoose)
@@ -118,12 +119,13 @@
                     if (user_dicriminated.indexOf(value) == -1) user_dicriminated.push(value);
                 });
                 console.log(user)
-                console.log(user_dicriminated)
+               
                 if (user_dicriminated.length == wordsletters.length) {
                     {
                         wins += 1
-                        alert("You won dude!")
-
+                        console.log("Urrra, our word: " + word)
+                        alert("You won dude! "+"our word: " + word)
+                        
                         document.getElementById("win").innerHTML = ("Wins: " + wins)
                         wrong_letters = []
                         //****
